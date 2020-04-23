@@ -28,3 +28,22 @@ resource "aws_s3_bucket" "backend" {
     Name        = "TF Backend"
   }
 }
+
+resource "aws_dynamodb_table" "terraform-locks" {
+  name           = "terraform-locks"
+  hash_key       = "LockID"
+  billing_mode   = "PAY_PER_REQUEST"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+
+  tags = {
+    Name = "terraform-locks"
+  }
+}
