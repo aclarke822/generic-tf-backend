@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "backend" {
-  bucket = "terraform.austinclarke.net"
+  bucket = "bucket.name.here"
   acl    = "private"
   force_destroy               = false
 
